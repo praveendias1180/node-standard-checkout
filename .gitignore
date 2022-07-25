@@ -1,3 +1,5 @@
 node_modules
 # Supabase
-.supabase
+**/supabase/.branches
+**/supabase/.temp
+**/supabase/.env**
