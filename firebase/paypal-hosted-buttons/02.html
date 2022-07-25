@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css"
+    href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./02.css" />
+  <title>Credit Cards | PayPal Advanced Checkout</title>
+</head>
+
+<body>
+  <div class="container pt-3">
+    <h1 class="py-3 display-3">PayPal Credit Card Payments</h1>
+    <div id="order-id"></div>
+    <div class="card_container">
+      <form id="card-form" class="my-2 rounded border p-2">
+        <label for="card-number">Card Number</label>
+        <div id="card-number" class="card_field"></div>
+        <div style="display: flex; flex-direction: row;">
+          <div>
+            <label for="expiration-date">Expiration Date</label>
+            <div id="expiration-date" class="card_field"></div>
+          </div>
+          <div style="margin-left: 10px;">
+            <label for="cvv">CVV</label>
+            <div id="cvv" class="card_field"></div>
+          </div>
+        </div>
+        <label for="card-holder-name">Name on Card</label>
+        <input class="form-control mb-2 mt-1" class="form-control" type="text" id="card-holder-name"
+          name="card-holder-name" autocomplete="off" placeholder="card holder name" />
+        <div>
+          <label for="card-billing-address-street">Billing Address</label>
+          <input class="form-control mb-2 mt-1" type="text" id="card-billing-address-street"
+            name="card-billing-address-street" autocomplete="off" placeholder="street address" />
+        </div>
+        <div>
+          <label for="card-billing-address-unit">&nbsp;</label>
+          <input class="form-control mb-2 mt-1" type="text" id="card-billing-address-unit"
+            name="card-billing-address-unit" autocomplete="off" placeholder="unit" />
+        </div>
+        <div>
+          <input class="form-control mb-2 mt-1" type="text" id="card-billing-address-city"
+            name="card-billing-address-city" autocomplete="off" placeholder="city" />
+        </div>
+        <div>
+          <input class="form-control mb-2 mt-1" type="text" id="card-billing-address-state"
+            name="card-billing-address-state" autocomplete="off" placeholder="state" />
+        </div>
+        <div>
+          <input class="form-control mb-2 mt-1" type="text" id="card-billing-address-zip"
+            name="card-billing-address-zip" autocomplete="off" placeholder="zip / postal code" />
+        </div>
+        <div>
+          <input class="form-control mb-2 mt-1" type="text" id="card-billing-address-country"
+            name="card-billing-address-country" autocomplete="off" placeholder="country code" />
+        </div>
+        <br /><br />
+        <button value="submit" id="submit" class="btn btn-primary">Pay</button>
+      </form>
+    </div>
+    <script src="./02.js"></script>
+  </div>
+</body>
+
+</html>
