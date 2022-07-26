@@ -21,12 +21,13 @@
         <hr />
         <div id="auth">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" value="praveendias1180@gmail.com">
-                <div id="emailHelp" class="form-text">Only admins can log in.</div>
+                <label for="exampleInputEmail1" class="form-label">API Access Token</label>
+                <input type="password" class="form-control" id="api_access_code">
+                <div id="emailHelp" class="form-text">Backend API Access Token</div>
               </div>
-              <button type="submit" class="btn btn-primary" id="login-button">Email Login Link</button>
-              <button type="submit" class="btn btn-outline-secondary" id="logout-button">Logout</button>
+              <button type="submit" class="btn btn-primary" id="save-button">Save</button>
+              <button type="submit" class="btn btn-outline-secondary" id="delete-button">Delete</button>
+              <button type="submit" class="btn btn-success" id="user-button">Get User</button>
         </div>
     </div>
     <script src="./00.js"></script>
