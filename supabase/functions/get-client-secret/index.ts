@@ -3,18 +3,19 @@
 // This enables autocomplete, go to definition, etc.
 
 import { serve } from "https://deno.land/std@0.131.0/http/server.ts";
+import { corsHeaders } from '../_shared/cors.ts'
+import { accessCodeCheck } from '../_shared/accessCodeCheck.ts'
 
 console.log("fn - get client secret");
 
 serve(async (req) => {
-  // This is needed if you're planning to invoke your function from a browser.
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey",
-  };
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
+
+  const api_access_code = req.headers.get('api-access-code') ?? ''
+  const check_response = accessCodeCheck(api_access_code)
+  if(check_response) return check_response
 
   // base URL will need to change for production applications
   const base = "https://api-m.sandbox.paypal.com";

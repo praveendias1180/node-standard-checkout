@@ -3,20 +3,21 @@
 // This enables autocomplete, go to definition, etc.
 
 import { serve } from "https://deno.land/std@0.131.0/http/server.ts";
+import { corsHeaders } from '../_shared/cors.ts'
+import { accessCodeCheck } from '../_shared/accessCodeCheck.ts'
 
 const CLIENT_ID = Deno.env.get("CLIENT_ID");
 const APP_SECRET = Deno.env.get("APP_SECRET");
 
 serve(async (req) => {
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers":
-      "authorization, x-client-info, apikey, content-type",
-  };
 
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
+
+  const api_access_code = req.headers.get('api-access-code') ?? ''
+  const check_response = accessCodeCheck(api_access_code)
+  if(check_response) return check_response
 
   const { orderId } = await req.json();
   const base = "https://api-m.sandbox.paypal.com";
