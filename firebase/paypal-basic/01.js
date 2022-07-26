@@ -26,17 +26,21 @@ const load_paypal = (clientId, clientToken) => {
 }
 
 const get_client_token = async () => {
+  const ls_item = localStorage.getItem('ls_api_data')
+  const api_access_code = ls_item ? JSON.parse(ls_item).api_access_code : ''
   return await fetch(FN_GET_CLIENT_SECRET, {
     method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + SUPABASE_ANON_PUBLIC },
+    headers: { 'Authorization': 'Bearer ' + SUPABASE_ANON_PUBLIC, 'api-access-code': api_access_code },
   }).then((res) => res.json()).then((json) => json.client_token)
 }
 
 const create_order = async () => {
+  const ls_item = localStorage.getItem('ls_api_data')
+  const api_access_code = ls_item ? JSON.parse(ls_item).api_access_code : ''
   loading(true)
   return await fetch(FN_CREATE_ORDER, {
     method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + SUPABASE_ANON_PUBLIC, 'Content-Type': 'application/json' },
+    headers: { 'Authorization': 'Bearer ' + SUPABASE_ANON_PUBLIC, 'Content-Type': 'application/json', 'api-access-code': api_access_code },
     body: JSON.stringify({ name: 'Praveen' })
   }).then((res) => res.json())
     .then((json) => {
@@ -47,10 +51,12 @@ const create_order = async () => {
 }
 
 const capture_payment = async (orderId) => {
+  const ls_item = localStorage.getItem('ls_api_data')
+  const api_access_code = ls_item ? JSON.parse(ls_item).api_access_code : ''
   loading(true)
   return await fetch(FN_CAPTURE_PAYMENT, {
     method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + SUPABASE_ANON_PUBLIC, 'Content-Type': 'application/json' },
+    headers: { 'Authorization': 'Bearer ' + SUPABASE_ANON_PUBLIC, 'Content-Type': 'application/json', 'api-access-code': api_access_code  },
     body: JSON.stringify({ orderId: orderId })
   }).then((res) => res.json()).then((json) => {
     loading(false)
