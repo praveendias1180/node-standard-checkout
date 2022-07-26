@@ -31,3 +31,18 @@ https://konghq.com/
 # Supabase related images
 
 ![](images.png)
+
+# Demo Images
+
+![](1-home-paypal.png)
+
+![](2-hosted-cards.png)
+
+![](3-paypal-button.png)
+
+![](4-transaction-summary.png)
+
+![](5-credit-card-payment.png)
+
+# Demo Video
+
